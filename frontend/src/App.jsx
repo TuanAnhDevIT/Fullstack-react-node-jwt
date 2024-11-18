@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Header from "./components/layout/header";
 import axios from "./util/axios.customize";
 
 function App() {
@@ -11,7 +12,11 @@ function App() {
     fetchHelloWorld();
   }, []);
 
-  return <>hello</>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export default App;
