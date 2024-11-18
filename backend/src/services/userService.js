@@ -42,6 +42,7 @@ const loginService = async (email, password) => {
           expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN,
         });
         return {
+          EC: 0,
           accessToken,
           user: {
             email: user.email,

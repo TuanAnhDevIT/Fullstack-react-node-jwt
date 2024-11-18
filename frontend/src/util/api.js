@@ -11,4 +11,13 @@ const createUserApi = (name, email, password) => {
   return axios.post(URL, data);
 };
 
-export { createUserApi };
+const loginApi = (email, password) => {
+  const URL = "/v1/api/login";
+  const data = {
+    email,
+    password,
+  };
+  return axios.post(URL, data);
+};
+
+export { createUserApi, loginApi };
