@@ -5,16 +5,17 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const items = [
     {
-      label: "Home Page",
+      label: <Link to={"/"}>Home Page</Link>,
       key: "home",
       icon: <MailOutlined />,
     },
     {
-      label: "Users",
+      label: <Link to={"/user"}>Users</Link>,
       key: "user",
       icon: <MailOutlined />,
     },

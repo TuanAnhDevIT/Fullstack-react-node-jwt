@@ -11,21 +11,32 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import UserPage from "./pages/user.jsx";
+import HomePage from "./pages/home.jsx";
+import LoginPage from "./pages/login.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // children: [
-    //   {
-    //     path: "register",
-    //     element: <RegisterPage />,
-    //   },
-    // ],
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "user",
+        element: <UserPage />,
+      },
+    ],
   },
   {
     path: "register",
     element: <RegisterPage />,
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
   },
 ]);
 
