@@ -1,22 +1,41 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { AuthContext } from "./components/context/auth.context";
 import Header from "./components/layout/header";
 import axios from "./util/axios.customize";
-import { Outlet } from "react-router-dom";
 
 function App() {
+  const { setAuth, appLoading, setAppLoading } = useContext(AuthContext);
   useEffect(() => {
-    const fetchHelloWorld = async () => {
-      const res = await axios.get(`/v1/api`);
-      console.log(res);
+    setAppLoading(true);
+    const fetchAccount = async () => {
+      const res = await axios.get(`/v1/api/account`);
+
+      if (res) {
+        setAuth({
+          isAuthenticated: true,
+          user: {
+            email: res.email ?? "",
+            name: res.name ?? "",
+          },
+        });
+      }
+      setAppLoading(false);
     };
 
-    fetchHelloWorld();
+    fetchAccount();
   }, []);
 
   return (
     <div>
-      <Header />
-      <Outlet />
+      {appLoading ? (
+        <>loading...</>
+      ) : (
+        <>
+          <Header />
+          <Outlet />
+        </>
+      )}
     </div>
   );
 }
